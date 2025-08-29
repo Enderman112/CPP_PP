@@ -15,4 +15,5 @@ add_executable(test main.cpp
         stock00.cpp
         stock10.h
         stock10.cpp
-        stock20.h)
+        stock20.h
+        stock20.cpp)

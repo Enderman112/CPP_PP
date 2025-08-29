@@ -847,3 +847,28 @@ int main() {
 }
 */
 
+#import "stock20.h"
+const int stks=4;
+int main() {
+    stock stocks[stks]={
+        stock("nanosmart",12,20.0),
+        stock("boffo objects",200,2.0),
+        stock("monolithic obelisks",130,3.25),
+        stock("fleep enterprise",60,6.5)
+    };
+
+    cout<<"你持有的股票为："<<endl;
+    int st;
+    for (st=0; st<stks; st++) {
+        stocks[st].show();
+    }
+
+    const stock *top=&stocks[0];
+    for (st=1;st<stks;st++) {
+        top=&top->topval(stocks[st]);
+    }
+
+    cout<<"最有价值的股票为："<<endl;
+    top->show();
+    return 0;
+}

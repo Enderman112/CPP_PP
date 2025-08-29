@@ -2,6 +2,7 @@
 // Created by 徐耀石 on 2025/8/29.
 //
 
+/*
 #ifndef TEST_STOCK10_H
 #define TEST_STOCK10_H
 #import <string>
@@ -25,3 +26,4 @@ public:
 };
 
 #endif //TEST_STOCK10_H
+*/
