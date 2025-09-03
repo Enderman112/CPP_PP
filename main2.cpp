@@ -11,10 +11,16 @@
 #include <__locale>
 #include <__chrono/formatter.h>
 #import <new>
+#include <ranges>
+
 #import "namesp.h"
 #import "coordin.h"
+#include "mytime0.h"
+#include "queue.h"
+#include "stack.h"
 #import "stock00.h"
 #import "stock10.h"
+#include "strngbad.h"
 
 using namespace std;
 #define ZERO 0;
@@ -847,6 +853,7 @@ int main() {
 }
 */
 
+/*
 #import "stock20.h"
 const int stks=4;
 int main() {
@@ -872,3 +879,366 @@ int main() {
     top->show();
     return 0;
 }
+*/
+
+/*
+int main() {
+    stacks st;
+    char ch;
+    unsigned long po;
+    cout<<"请输入字母A来添加一个订单，"<<endl;
+    cout<<"输入P来展示预定订单，或输入Q退出";
+    while (cin>>ch&&toupper(ch)!='Q'){
+    while (cin.get()!='\n') {
+        continue;
+    }
+        if (!isalpha(ch)){
+            cout<<'\a';
+            continue;
+        }
+        switch (ch) {
+            case 'A':
+            case 'a':cout<<"输入预订单编号来添加：";
+                cin>>po;
+                if (st.isfull()) {
+                    cout<<"列表已满"<<endl;
+                }
+                else {
+                    st.push(po);
+                }
+                break;
+            case 'P':
+            case 'p':if (st.isempty()) {
+                cout<<"列表已空"<<endl;
+            }
+            else {
+                st.pop(po);
+                cout<<"预订单#"<<po<<"已加入"<<endl;
+            }
+                break;
+        }
+        cout<<"请输入字母A来添加一个订单，"<<endl;
+        cout<<"输入P来展示预定订单，或输入Q退出";
+    }
+    cout<<"再见"<<endl;
+    return 0;
+}
+*/
+
+/*
+int main() {
+    times planing;
+    times coding(2,40);
+    times fixing(5,55);
+    times total;
+
+    cout<<"计划时间为：";
+    planing.show();
+    cout<<endl;
+
+    cout<<"编程时间为：";
+    coding.show();
+    cout<<endl;
+
+    cout<<"找bug时间为：";
+    fixing.show();
+    cout<<endl;
+
+    //total=coding.sum(fixing);old one
+    total=coding+fixing;
+    cout<<"编程与修bug总时间为：";
+    total.show();
+    cout<<endl;
+
+    //new one more
+    times morefixing(3,28);
+    cout<<"更多修bug时间为：";
+    morefixing.show();
+    cout<<endl;
+    total=morefixing.operator+(total);
+    cout<<"新总时间：";
+    total.show();
+    cout<<endl;
+
+    return 0;
+}
+*/
+
+/*
+int main() {
+    times weeding(4,35);
+    times waxing(2,47);
+    times total;
+    times diff;
+    times adjusted;
+
+    cout<<"漂时间：";
+    weeding.show();
+    cout<<endl;
+
+    cout<<"洗时间：";
+    waxing.show();
+    cout<<endl;
+
+    cout<<"总工作时间：";
+    total=weeding+waxing;
+    total.show();
+    cout<<endl;
+
+    diff=weeding-waxing;
+    cout<<"漂时间-洗时间：";
+    diff.show();
+    cout<<endl;
+
+    adjusted=total*1.5;
+    cout<<"建议工作时间：";
+    adjusted.show();
+    cout<<endl;
+
+    return 0;
+}
+*/
+
+/*
+int main() {
+    times aida(3,35);
+    times tosca(2,48);
+    times temp;
+
+    cout<<"aida和tosca"<<endl;
+    cout<<aida<<";"<<tosca<<endl;
+    temp=aida+tosca;
+    cout<<"aida+tosca"<<temp<<endl;
+    temp=aida*1.17;
+    cout<<"aida*1.17"<<temp<<endl;
+    cout<<"10.0*tosca"<<10.0*tosca<<endl;
+
+    return 0;
+}
+*/
+
+/*
+void callme1(stringbad &);
+void callme2(stringbad);
+
+int main() {
+    {
+        cout<<"内部代码块起始处"<<endl;
+        stringbad headline1("Celaery Stalks at Midnight");
+        stringbad headline2("Lettuce Prey");
+        stringbad sports("某种沙拉");
+        cout<<"主食1："<<headline1<<endl;
+        cout<<"主食2："<<headline2<<endl;
+        cout<<"运动："<<sports<<endl;
+        callme1(headline1);
+        cout<<"主食1："<<headline1<<endl;
+        callme2(headline2);
+        cout<<"主食2："<<headline2<<endl;
+        cout<<"将一个项目复制到另一个"<<endl;
+        stringbad sailor=sports;
+        cout<<"平时："<<sailor<<endl;
+        cout<<"同上，但方法不同"<<endl;
+        stringbad knot;
+        knot=headline1;
+        cout<<"knot:"<<knot<<endl;
+    }
+    cout<<"结束"<<endl;
+    return 0;
+}
+
+void callme1(stringbad &rsb) {
+    cout<<"使用引用传递"<<endl;
+    cout<<"\""<<rsb<<"\""<<endl;
+}
+
+void callme2(stringbad sb) {
+    cout<<"按值传递"<<endl;
+    cout<<"\""<<sb<<"\""<<endl;
+}
+*/
+
+//todo with string1
+
+
+/*
+const int buf=512;
+class justtesting {
+private:
+    string words;
+    int number;
+public:
+    justtesting(const string &s="justesting", int n=0)
+{
+    words=s;number=n;cout<<words<<"已构建"<<endl;
+}
+    ~justtesting() {
+        cout<<words<<"已析构"<<endl;
+    }
+    void show() const {
+        cout<<words<<","<<number<<endl;
+    }
+};
+int main() {
+    char *buffer=new char[buf];
+    justtesting *pc1,*pc2;
+
+    pc1=new(buffer)justtesting;
+    pc2=new justtesting("heap1",20);
+
+    cout<<"内存块地址"<<endl;
+    cout<<"buffer:"<<(void *)buffer<<endl;
+    cout<<"heap:"<<pc2<<endl;
+    cout<<"内存内容"<<endl;
+    cout<<"pc1:";
+    pc1->show();
+    cout<<"pc2:";
+    pc2->show();
+
+    justtesting *pc3,*pc4;
+    pc3=new(buffer)justtesting("bad idea",6);
+    pc4=new justtesting("heap2",10);
+
+    cout<<"内存内容"<<endl;
+    cout<<"pc3:"<<endl;
+    pc3->show();
+    cout<<"pc4:"<<endl;
+    pc4->show();
+
+    delete pc2;
+    delete pc4;
+    delete []buffer;
+    cout<<"完成"<<endl;
+    return 0;
+
+}
+*/
+
+/*
+const int buf=512;
+class justtesting {
+private:
+    string words;
+    int numbers;
+public:
+    justtesting(const string &s="just testing", int n=0) {
+      words=s;numbers=n;cout<<words<<"已构建"<<endl;
+    };
+    ~justtesting() {
+        cout<<words<<"已析构"<<endl;
+    }
+    void show() const {
+        cout<<words<<","<<numbers<<endl;
+    }
+};
+int main() {
+    char *buffer=new char[buf];
+
+    justtesting *pc1,*pc2;
+    pc1=new(buffer)justtesting;
+    pc2=new justtesting("heap1",20);
+
+    cout<<"内存块地址："<<endl;
+    cout<<"buffer:"<<(void *)buffer<<endl;
+    cout<<"heap:"<<pc2<<endl;
+    cout<<"内存内容"<<endl;
+    cout<<"pc1:";
+    pc1->show();
+    cout<<"pc2:";
+    pc2->show();
+
+    justtesting *pc3,*pc4;
+    pc3=new(buffer+sizeof(justtesting))justtesting("better idea",6);
+    pc4=new justtesting("heap2",10);
+
+    cout<<"内存内容"<<endl;
+    cout<<"pc3:"<<endl;
+    pc3->show();
+    cout<<"pc4:"<<endl;
+    pc4->show();
+
+    delete pc2;
+    delete pc4;
+    //fix
+    pc3->~justtesting();
+    pc1->~justtesting();
+    delete []buffer;
+    cout<<"完成"<<endl;
+    return 0;
+}
+*/
+
+/*
+const int min_per_hr=60;
+
+bool new_customer(double x);
+
+int main() {
+    srand(time(0));
+    cout<<"案例：银行排队报告"<<endl;
+    cout<<"输入队列最大人数：";
+    int qs;
+    cin>>qs;
+    Queue line(qs);
+
+    cout<<"输入模拟时长（小时计）：";
+    int hours;
+    cin>>hours;
+    long cyclelimit=min_per_hr*hours;
+
+    cout<<"输入每小时平均客户数量：";
+    double per_hour;
+    cin>>per_hour;
+    double min_per_cust;
+    min_per_cust=min_per_hr/per_hour;
+
+    Item temp;
+    long turnaways=0;
+    long customers=0;
+    long served=0;
+    long sum_line=0;
+    int wait_time=0;
+    long line_wait=0;
+
+    for (int cycle=0;cycle<cyclelimit;cycle++) {
+        if (new_customer(min_per_cust)) {
+            if (line.is_full()) {
+                turnaways++;
+            }
+            else {
+                customers++;
+                temp.set(cycle);
+                line.enqueue(temp);
+            }
+        }
+        if (wait_time<=0 and !line.is_empty()) {
+            line.dequeue(temp);
+            wait_time=temp.ptime();
+            line_wait+=cycle-temp.when();
+            served++;
+        }
+        if (wait_time>0) {
+            wait_time--;
+        }
+        sum_line+=line.queuecount();
+    }
+    if (customers>0) {
+        cout<<"已接收客户"<<customers<<"人"<<endl;
+        cout<<"已服务客户"<<served<<"人"<<endl;
+        cout<<"循环"<<turnaways<<"次"<<endl;
+        cout<<"平均排队时长";
+        cout.precision(2);
+        cout.setf(ios_base::fixed, ios_base::floatfield);
+        cout<<(double)line_wait/served<<"分钟"<<endl;
+    }
+    else {
+        cout<<"未服务任何客户"<<endl;
+    }
+    cout<<"完成"<<endl;
+    return 0;
+}
+
+bool new_customer(double x) {
+    return (rand()*x/RAND_MAX<1);
+}
+*/
+

@@ -12,7 +12,8 @@ CTestTestfile.cmake
 _deps
 /cmake-build-debug/
 /cmake-build-release/
-
+/build/
+/main2.dSYM/
 ### Example user template template
 ### Example user template
 
