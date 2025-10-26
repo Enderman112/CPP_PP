@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 project(test)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 26)
 
 add_executable(test main.cpp
         main2.cpp
@@ -28,4 +28,17 @@ add_executable(test main.cpp
         string1.h
         string1.cpp
         queue.h
-        queue.cpp)
+        queue.cpp
+        tabtenn0.h
+        tabtenn0.cpp
+        brass.h
+        acctabc.h
+        dma.h
+        dma.cpp
+        studentc.h
+        studentc.cpp
+        stacktp.h
+        arraytp.h
+        queuetp.h
+        exc_mean.h
+)

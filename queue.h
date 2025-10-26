@@ -28,6 +28,7 @@ private:
     int items;
 
     const int qsize=10;
+    Queue(const Queue &q):qsize(0){}
     Queue &operator=(const Queue &q){return *this;}
 public:
     Queue(int qs=Q_size);

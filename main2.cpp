@@ -5,22 +5,32 @@
 #import <vector>
 #import <array>
 #import <ctime>
+#include <cctype>
 #import <cctype>
 #import <fstream>
+#include <iterator>
 #import <cstdlib>
+#include <float.h>
+#include <memory>
 #include <__locale>
 #include <__chrono/formatter.h>
 #import <new>
 #include <ranges>
 
+#include "arraytp.h"
 #import "namesp.h"
 #import "coordin.h"
+#include "dma.h"
+#include "exc_mean.h"
 #include "mytime0.h"
 #include "queue.h"
 #include "stack.h"
+#include "stacktp.h"
 #import "stock00.h"
 #import "stock10.h"
 #include "strngbad.h"
+#include "studentc.h"
+#include "tabtenn0.h"
 
 using namespace std;
 #define ZERO 0;
@@ -1242,3 +1252,419 @@ bool new_customer(double x) {
 }
 */
 
+/*
+int main(void) {
+    tabletennisplayer player1("chuck","blizzard",true);
+    tabletennisplayer player2("tara","boomdea",false);
+    player1.name();
+    if (player1.Hastable()) {
+        cout<<"有空闲桌子"<<endl;
+    }
+    else {
+        cout<<"无空闲桌子"<<endl;
+    }
+    player2.name();
+    if (player2.Hastable()) {
+        cout<<"有空闲桌子"<<endl;
+    }
+    else {
+        cout<<"无空闲桌子"<<endl;
+    }
+    return 0;
+}
+*/
+
+/*
+//new
+int main(void) {
+    tabletennisplayer player1("tara","boomdea",true);
+    ratedplayer rplayer1(1140,"mallory","duck",true);
+    rplayer1.name();
+    if (rplayer1.Hastable()) {
+        cout<<"有空闲桌子"<<endl;
+    }
+    else {
+        cout<<"无空闲桌子"<<endl;
+    }
+    player1.name();
+    if (player1.Hastable()) {
+        cout<<"有空闲桌子"<<endl;
+    }
+    else {
+        cout<<"无空闲桌子"<<endl;
+    }
+    cout<<"名字：";
+    rplayer1.name();
+    cout<<"；得分："<<rplayer1.Rating()<<endl;
+    ratedplayer rplayer2(1212,player1);
+    cout<<"名字：";
+    rplayer2.name();
+    cout<<"；得分："<<rplayer2.Rating()<<endl;
+    return 0;
+}
+*/
+
+/*
+int main() {
+    baseDMA shirt("portabelly",8);
+    lacksDMA ballon("red","blimpo",4);
+    hasDMA map("mercator","buffalo keys",5);
+    cout<<"显示baseDMA项目："<<endl;
+    cout<<shirt<<endl;
+    cout<<"显示lacksDMA项目："<<endl;
+    cout<<ballon<<endl;
+    cout<<"显示hasDMA项目："<<endl;
+    cout<<map<<endl;
+    lacksDMA ballon2(ballon);
+    cout<<"lacksDMA复制后结果："<<endl;
+    cout<<ballon2<<endl;
+    hasDMA map2;
+    map2=map;
+    cout<<"hasDMA赋值结果："<<endl;
+    cout<<map2<<endl;
+    return 0;
+}
+*/
+
+/*c/i
+void set(student &sa,int n);
+const int pupils=3;
+const int quizzes=5;
+int main() {
+    student ada[pupils]={student(quizzes),student(quizzes),student(quizzes)};
+    int i;
+    for (i=0;i<pupils;++i) {
+        set(ada[i],quizzes);
+    }
+    cout<<endl<<"学生名单："<<endl;
+    for (i=0;i<pupils;++i){
+    cout<<ada[i].Name()<<endl;
+    }
+    cout<<endl<<"结果：";
+    for (i=0;i<pupils;++i) {
+        cout<<endl<<ada[i];
+        cout<<"平均成绩："<<ada[i].average()<<endl;
+    }
+    cout<<"完成"<<endl;
+    return 0;
+}
+
+void set(student &sa, int n) {
+    cout<<"请输入学生名字：";
+    getline(cin,sa);
+    cout<<"请输入学生"<<n<<"次的测试分数："<<endl;
+    for (int i=0;i<n;i++) {
+        cin>>sa[i];
+    }
+    while (cin.get()!='\n') {
+        continue;
+    }
+}
+*/
+
+/*
+int main() {
+    stack2<string> st;
+    char ch;
+    string po;
+    cout<<"输入A来添加订单"<<"P来推送订单，或输入Q退出"<<endl;
+    while (cin>>ch and toupper(ch)!='Q') {
+        while (cin.get()!='\n') {
+            continue;
+        }
+        if (!isalpha(ch)) {
+            cout<<'\a';
+            continue;
+        }
+        switch (ch) {
+            case 'A':
+            case 'a':
+                cout<<"输入订单编号来添加：";
+                cin>>po;
+                if (st.isfull()) {
+                    cout<<"进程已满"<<endl;
+                }
+                    else {
+                        st.push(po);
+                    }
+                break;
+            case 'P':
+            case 'p':
+                if (st.isempty()) {
+                    cout<<"进程已空"<<endl;
+                }
+                else {
+                    st.pop(po);
+                    cout<<"PO#"<<po<<"已推送"<<endl;
+                    break;
+                }
+        }
+        cout<<"输入A来添加订单"<<"P来推送订单，或输入Q退出"<<endl;
+    }
+    cout<<"完成";
+    return 0;
+}
+*/
+
+/*
+int main(void) {
+    arraytp<int,10>sums;
+    arraytp<double,10>aves;
+    arraytp<arraytp<int,5>,10>twodee;
+
+    int i,j;
+    for (i=0;i<10;i++) {
+        sums[i]=0;
+        for (j=0;j<5;j++) {
+            twodee[i][j]=(i+1)*(j+1);
+            sums[i]+=twodee[i][j];
+        }
+        aves[i]=(double)sums[i]/10;
+    }
+    for (i=0;i<10;i++) {
+        for (j=0;j<5;j++) {
+            cout.width(2);
+            cout<<twodee[i][j]<<" ";
+        }
+        cout<<":总和=";
+        cout.width(3);
+        cout<<sums[i]<<",平均值="<<aves[i]<<endl;
+    }
+    cout<<"完成"<<endl;
+    return 0;
+}
+*/
+
+/*
+template<typename T>
+class beta {
+private:
+    template<typename V>
+    class hold {
+    private:
+        V val;
+    public:
+        hold(V v=0):val(v){}
+        void show() const{cout<<val<<endl;}
+        V value() const{return val;}
+    };
+    hold<T> q;
+    hold<int> n;
+public:
+    beta(T t,int i):q(t),n(i){}
+    template<typename U>
+    U blab(U u,T t){return (n.value()+q.value())*u/t;}
+    void show() const{q.show();n.show();}
+};
+int main() {
+    beta<double>guy(3.5,3);
+    cout<<"T被设置为double"<<endl;
+    guy.show();
+    cout<<"V被设置到T，即double，然后V被设为int"<<endl;
+    cout<<guy.blab(10,2.3)<<endl;
+    cout<<"U被设置为int"<<endl;
+    cout<<guy.blab(10.0,2.3)<<endl;
+    cout<<"U被设置为double"<<endl;
+    return 0;
+}
+*/
+
+/*
+template<template<typename T> class thing>
+class crab {
+private:
+    thing<int>s1;
+    thing<double>s2;
+public:
+    crab(){}
+    bool push(int a, double x){return s1.push(a) and s2.push(x);}
+    bool pop(int &a, double &x){return s1.pop(a),s2.pop(x);}
+};
+int main() {
+    crab<stack2>nebula;
+    int ni;
+    double nb;
+    cout<<"输入一个int和一个double，以0 0退出"<<endl;
+    while (cin>>ni>>nb and ni>0 and nb>0) {
+        if (!nebula.push(ni,nb)) {
+            break;
+        }
+    }
+    while (nebula.pop(ni,nb)) {
+        cout<<ni<<","<<nb<<endl;
+    }
+    cout<<"完成"<<endl;
+    return 0;
+}
+*/
+
+/*
+double hmean(double a,double b);
+int main() {
+    double x,y,z;
+    cout<<"输入两个数字：";
+    while (cin>>x>>y) {
+        z=hmean(x,y);
+        cout<<x<<","<<y<<","<<z<<endl;
+        cout<<"请继续输入，或以q退出：";
+    }
+    cout<<"完成"<<endl;
+    return 0;
+}
+
+double hmean(double a, double b) {
+    if (a==-b) {
+        cout<<"错误的参数"<<endl;
+        abort();
+    }
+    return 2.0*a*b/(a+b);
+}
+*/
+
+/*
+double hmean(double a,double b,double *ans);
+int main() {
+    double x,y,z;
+    cout<<"输入两个数字：";
+    while (cin>>x>>y) {
+        if (hmean(x,y,&z)) {
+            cout<<x<<","<<y<<","<<z<<endl;
+        }
+        else {
+            cout<<"一个数字不能为另一个数字的负数"<<endl;
+        }
+            cout<<"请继续输入，或以q退出：";
+    }
+    cout<<"完成"<<endl;
+    return 0;
+}
+
+double hmean(double a, double b,double *ans) {
+    if (a==-b) {
+       *ans=DBL_MAX;
+        return false;
+    }
+    else {
+        *ans=2.0*a*b/(a+b);
+        return true;
+    }
+}
+*/
+
+/*
+double hmean(double a,double b);
+int main() {
+    double x,y,z;
+    cout<<"输入两个数字：";
+    while (cin>>x>>y) {
+        try {
+            z=hmean(x,y);
+        } catch (const char *s) {
+            cout<<s<<"\n";
+            cout<<"输入一组新数字：";
+            continue;
+        }
+        cout<<x<<","<<y<<","<<z<<endl;
+        cout<<"请继续输入，或以q退出：";
+    }
+    cout<<"完成"<<endl;
+    return 0;
+}
+
+double hmean(double a, double b) {
+    if (a==-b) {
+        throw "错误的参数";
+    }
+    return 2.0*a*b/(a+b);
+}
+*/
+
+/*
+double hmean(double a,double b);
+double gmean(double a,double b);
+int main() {
+    double x,y,z;
+    cout<<"输入两个数字：";
+    while (cin>>x>>y) {
+        try {
+            z=hmean(x,y);
+            cout<<x<<","<<y<<","<<z<<endl;
+            cout<<x<<","<<y<<","<<gmean(x,y)<<endl;
+            cout<<"请继续输入，或以q退出";
+        }
+        catch (bad_hmean &bg) {
+            bg.msg();
+            cout<<"再试一次";
+            continue;
+        }
+        catch (bad_gmean &hg) {
+            cout<<hg.msg();
+            cout<<hg.v1<<","<<hg.v2<<endl;
+            cout<<"已终止"<<endl;
+            break;
+        }
+    }
+        cout<<"完成"<<endl;
+        return 0;
+}
+
+double hmean(double a, double b) {
+    if (a==-b) {
+        throw bad_hmean(a,b);
+    }
+    return 2.0*a*b/(a+b);
+}
+
+double gmean(double a, double b) {
+    if (a<0 || b<0) {
+        throw bad_gmean(a,b);
+    }
+    return sqrt(a*b);
+}
+*/
+
+/*
+struct big {
+    double stuff[2000000000];
+};
+int main() {
+    big *bp;
+    try {
+        cout<<"正在获取巨大多内存块"<<endl;
+        bp=new big[10000000];
+        cout<<"完成"<<endl;
+    }
+    catch (bad_alloc &ba) {
+        cout<<"捕捉到错误"<<endl;
+        cout<<ba.what()<<endl;
+        exit(EXIT_FAILURE);
+    }
+    cout<<"成功获取内存"<<endl;
+    bp[0].stuff[0]=4;
+    cout<<bp[0].stuff[0]<<endl;
+    delete []bp;
+    return 0;
+
+
+*/
+
+int main() {
+    int cast[10]={6,7,2,9,4,11,8,7,10,5};
+    vector<int> dice(10);
+    copy(cast,cast+10,dice.begin());
+    cout<<"Let the dice be cast"<<endl;
+    ostream_iterator<int,char>out_iter(cout," ");
+    copy(dice.begin(),dice.end(),out_iter);
+    cout<<endl;
+    cout<<"reverse"<<endl;
+    copy(dice.rbegin(),dice.rend(),out_iter);
+    cout<<endl;
+    cout<<"reverse"<<endl;
+    vector<int>::reverse_iterator ri;
+    for (ri=dice.rbegin();ri!=dice.rend();ri++) {
+        cout<<*ri<<" ";
+    }
+    cout<<endl;
+
+    return 0;
+}
